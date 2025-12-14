@@ -1,9 +1,3 @@
-# Bash for Kids 🐧
+# Bash für Kinder
 
-This repository contains lessons, exercises, and small projects
-to learn Bash from zero.
-
-## How to use
-- Each lesson is in `lessons/`
-- Read `README.md` first
-- Try the exercises in the terminal
+Dieses Repository enthält Übungen und Erklärungen, die dabei helfen sollen, Bash von Grund auf zu erlernen.
