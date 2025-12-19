@@ -75,6 +75,62 @@ if [[ $task1a -eq 1 && $task1b -eq 1 && $task2 -eq 1 && $task3 -eq 1 && $task4 -
   echo "🏆 GEWONNEN!"
   mkdir -p "$HOME/bash-lernstand"
   echo "Lektion 2 geschafft! 🏆" > "$HOME/bash-lernstand/lektion-2-geschafft.txt"
+  # Lexikon aktualisieren (nach der Lektion neu schreiben)
+  LEX="$HOME/bash-lexikon.txt"
+  cat > "$LEX" <<'EOF'
+BASH-LEXIKON 📘 (Stand: Lektion 2)
+
+Alphabetisch sortiert:
+
+cat  (Text anzeigen)
+AUFBAU: cat DATEI
+Beispiele: cat schatz.txt | cat ANLEITUNG.txt
+
+cd  (Ordner wechseln)
+AUFBAU: cd ZIEL
+Spezial: cd . | cd ..
+Beispiele: cd spiel | cd ..
+
+cp  (copy = kopieren)
+AUFBAU: cp QUELLE... ZIEL
+- QUELLE...: Datei(en), die kopiert werden
+- ZIEL: Zielordner (oder Dateiname)
+Beispiele:
+cp geheimcode.txt spiel/zimmer-jakob/schreibtisch/
+cp poster.txt spiel/zimmer-sophia/schreibtisch/
+
+less  (lesen)
+AUFBAU: less DATEI
+Beispiele: less ANLEITUNG.txt | less ~/bash-lexikon.txt
+
+ls  (auflisten)
+AUFBAU: ls [OPTION] [ORDNER]
+Beispiele: ls | ls -l
+
+mkdir  (Ordner erstellen)
+AUFBAU: mkdir ORDNER
+Beispiele: mkdir test | mkdir -p a/b/c
+
+mv  (move = verschieben/umbenennen)
+AUFBAU: mv QUELLE... ZIEL
+MERKSATZ: Das LETZTE Argument ist das Ziel.
+Beispiele:
+mv foto1.jpg spiel/ablage/bilder/
+mv alt.txt neu.txt
+
+pwd  (aktueller Ordner)
+AUFBAU: pwd
+
+rm  (löschen) VORSICHT!
+AUFBAU: rm DATEI
+Beispiele: rm kaputt.tmp | rm -r alter_ordner
+
+touch  (leere Datei erstellen)
+AUFBAU: touch DATEI
+Beispiele: touch todo.txt | touch neu.txt
+EOF
+  echo "✅ Lexikon aktualisiert: $LEX"
+
   exit 0
 else
   exit 1

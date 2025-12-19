@@ -1,34 +1,73 @@
 #!/usr/bin/env bash
 set -u
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-if [[ -d "$SCRIPT_DIR/spiel" ]]; then
-  ROOT="$SCRIPT_DIR/spiel"
-elif [[ -d "./zimmer-jakob" && -d "./zimmer-sophia" ]]; then
-  ROOT="$(pwd)"
-else
-  echo "❌ Spielordner nicht gefunden."
-  exit 2
-fi
 
-hint_count=$(find "$ROOT" -type f -name "hinweis-*" 2>/dev/null | wc -l | tr -d ' ')
-task1=$([[ "$hint_count" -ge 2 ]] && echo 1 || echo 0)
+read -p "Gib den gefundenen Satz ein: " input
 
-code_hits=$(grep -R -i "code" "$ROOT" 2>/dev/null | wc -l | tr -d ' ')
-task2=$([[ "$code_hits" -ge 2 ]] && echo 1 || echo 0)
-
-read -p "Gib den Lösungs-Code ein (z.B. DRACHE-42): " input
-task3=$([[ "$input" == "DRACHE-42" ]] && echo 1 || echo 0)
-
-echo "Checkliste:"
-[[ $task1 -eq 1 ]] && echo "✅ 1) Hinweis-Dateien gefunden." || echo "❌ 1) Hinweis-Dateien fehlen. Tipp: find spiel -name "hinweis-*""
-[[ $task2 -eq 1 ]] && echo "✅ 2) CODE-Zeilen gefunden." || echo "❌ 2) CODE-Zeilen fehlen. Tipp: grep -R CODE spiel"
-[[ $task3 -eq 1 ]] && echo "✅ 3) Code stimmt." || echo "❌ 3) Code ist falsch."
-
-if [[ $task1 -eq 1 && $task2 -eq 1 && $task3 -eq 1 ]]; then
-  echo "🏆 GEWONNEN!"
+if [[ "$input" == "Von Hobbingen zum Einsamen Berg" ]]; then
+  echo "🏆 Richtig! Rätsel gelöst."
   mkdir -p "$HOME/bash-lernstand"
-  echo "Lektion 3 geschafft! 🏆" > "$HOME/bash-lernstand/lektion-3-geschafft.txt"
+  echo "Lektion 3 geschafft!" > "$HOME/bash-lernstand/lektion-3-geschafft.txt"
+  # Lexikon aktualisieren (nach der Lektion neu schreiben)
+  LEX="$HOME/bash-lexikon.txt"
+  cat > "$LEX" <<'EOF'
+BASH-LEXIKON 📘 (Stand: Lektion 3)
+
+Alphabetisch sortiert:
+
+cat
+AUFBAU: cat DATEI
+
+cd
+AUFBAU: cd ZIEL
+Spezial: cd . | cd ..
+
+cp
+AUFBAU: cp QUELLE... ZIEL
+
+find  (finden)
+AUFBAU: find WO -name DATEINAME
+- WO: wo gesucht wird (meistens .)
+- -name: sucht nach dem Dateinamen
+- DATEINAME: exakter Name
+Beispiele:
+find . -name "hinweis-rot.txt"
+find . -name "hinweis-blau.txt"
+
+grep  (suchen)
+AUFBAU: grep SUCHWORT DATEI1 DATEI2 ...
+MERKSATZ:
+- ERSTES Argument = Suchwort
+- ALLES danach = DATEIEN, in denen gesucht wird
+grep sucht NICHT in Ordnern, sondern nur in Dateien.
+Beispiele:
+grep CODE hinweis-rot.txt
+grep CODE hinweis-rot.txt hinweis-blau.txt
+
+less
+AUFBAU: less DATEI
+
+ls
+AUFBAU: ls [OPTION] [ORDNER]
+
+mkdir
+AUFBAU: mkdir ORDNER
+
+mv
+AUFBAU: mv QUELLE... ZIEL
+
+pwd
+AUFBAU: pwd
+
+rm
+AUFBAU: rm DATEI
+
+touch
+AUFBAU: touch DATEI
+EOF
+  echo "✅ Lexikon aktualisiert: $LEX"
+
   exit 0
 else
+  echo "❌ Das ist noch nicht richtig."
   exit 1
 fi

@@ -1,35 +1,132 @@
-LEKTION 3 – DETEKTIV-SPIEL 🕵️‍♂️🔍
+LEKTION 3 – DAS RÄTSEL VON PAPA 🕵️‍♂️📜
 
 GESCHICHTE
-In den Zimmern von Jakob und Sophia liegen viele Zettel.
-Einige sind nur Ablenkung, aber ein paar enthalten echte Hinweise.
-Ein Detektiv öffnet nicht alles, sondern sucht gezielt nach Mustern.
-Am Ende setzt du zwei Code-Teile zu einem Lösungs-Code zusammen.
+
+Papa hat dir ein Rätsel gestellt.
+
+Er sagt:
+„Im Haus sind mehrere Hinweise versteckt.
+Ich sage dir nicht, wo sie liegen –
+aber ich sage dir, wie sie heißen.
+
+Wenn du alle Hinweise findest und richtig zusammensetzt,
+ergibt sich ein Satz aus einer bekannten Geschichte.“
+
+Die Hinweise gehören zusammen.
+Nur wer gezielt sucht, kann das Rätsel lösen.
+
+========================================
+ERKLÄRUNG – WIE DU VORGEHEN SOLLST
+
+In dieser Lektion sollst du dich NICHT
+durch das Haus bewegen.
+
+Du bleibst im Ordner:
+spiel
+
+Von dort aus sollst du:
+- Dateien finden, ohne sie vorher zu sehen
+- Text in Dateien suchen, ohne alles zu öffnen
+
+Die Hinweis-Dateien sind absichtlich sehr lang
+und unübersichtlich (ca. 100 Zeilen).
+Wenn du sie einfach mit less liest,
+brauchst du sehr lange.
+
+Du sollst deshalb gezielt suchen.
+
+========================================
+DIE HINWEISE
+
+Papa verrät dir die Namen der Hinweis-Dateien:
+
+- hinweis-rot.txt
+- hinweis-blau.txt
+- hinweis-gruen.txt
+- hinweis-gelb.txt
+
+WICHTIG:
+Die Farben sagen NICHT, in welcher Reihenfolge die Wörter
+im Lösungssatz stehen.
+
+Du musst die gefundenen Lösungswörter selbst sinnvoll
+zu einem Satz zusammensetzen.
 
 ========================================
 BEFEHLE – GENAU ERKLÄRT
 
 find  (finden)
+
+WAS MACHT ES?
+find geht durch Ordner und zeigt Dateien,
+deren Name genau passt.
+
 AUFBAU:
-find WO OPTION WAS
-- WO (1. Argument): wo gesucht wird (z.B. . oder spiel)
-- OPTION (Flag): wie gesucht wird (z.B. -name)
-- WAS (Muster): wonach gesucht wird (z.B. "hinweis-*")
-Beispiele:
-find . -name "hinweis-*"
-find spiel -name "*.txt"
+find WO -name DATEINAME
+
+ARGUMENTE:
+
+1) WO
+   Wo soll gesucht werden?
+   Meistens:
+   .
+   Das bedeutet: hier (im Ordner spiel)
+
+2) -name
+   Eine Flag.
+   Sie sagt: Suche nach dem Namen einer Datei.
+
+3) DATEINAME
+   Der exakte Name der Datei.
+   Der Computer ist hier sehr genau.
+
+BEISPIELE:
+find . -name "hinweis-rot.txt"
+find . -name "hinweis-blau.txt"
+
+----------------------------------------
 
 grep  (suchen)
+
+WARUM HEISST ES GREP?
+Der Name ist sehr alt und war ursprünglich zusammengesetzt.
+Er kommt von einem früheren Befehl:
+
+g/re/p
+
+Das bestand aus drei Teilen:
+- g  = global (überall im Text)
+- re = regular expression (Suchmuster)
+- p  = print (zeige die Zeilen)
+
+Kurz gesagt:
+„Suche überall nach einem Muster und zeige die Treffer.“
+
+WAS MACHT ES?
+grep liest Text und zeigt nur die Zeilen,
+in denen ein bestimmtes Wort vorkommt.
+
 AUFBAU:
-grep [OPTION] TEXT DATEI
-- TEXT: das Wort/die Zeichenfolge
-- DATEI: Datei(en), die durchsucht werden
-OPTION:
--i  (Groß-/Klein egal)
-Beispiele:
+grep SUCHWORT DATEI1 DATEI2 DATEI3 ...
+
+WICHTIGER MERKSATZ:
+Bei grep ist das ERSTE Argument das Wort,
+nach dem gesucht wird.
+Alles danach sind DATEIEN,
+in denen gesucht wird.
+
+grep sucht NICHT in Ordnern,
+sondern nur in Dateien.
+
+BEISPIELE:
 grep CODE hinweis-rot.txt
-grep -R -i code spiel
+grep CODE hinweis-rot.txt hinweis-blau.txt
 
 ========================================
 ZIEL
-Finde Hinweise durch Suchen, nicht durch Raten.
+
+1) Finde alle Hinweis-Dateien mit find
+2) Finde in jeder Datei die CODE-Zeile mit grep
+3) Setze die gefundenen Wörter zu einem Satz zusammen
+4) Prüfe am Ende mit:
+bash lösen.sh
