@@ -1,14 +1,9 @@
 #!/usr/bin/env bash
 set -u
-
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-
 echo "LEVEL-ABSCHLUSS: Lektion 1 ✅"
 echo
 echo "Frage: Wo liegt der Schatz?"
-echo "(Wähle eine Antwort aus der Liste.)"
 echo
-
 options=(
   "im Wald, in der Höhle"
   "im Wald, an der Lichtung"
@@ -21,63 +16,61 @@ options=(
   "am Meer, auf der Insel, in der Höhle"
   "im Dorf, am Markt"
 )
-
 PS3="Deine Wahl (1-10): "
 select choice in "${options[@]}"; do
-  if [[ -z "${choice:-}" ]]; then
-    echo "Bitte eine Zahl von 1 bis 10 wählen."
-    continue
-  fi
-
+  [[ -z "${choice:-}" ]] && echo "Bitte 1-10 wählen." && continue
   if [[ "$REPLY" == "9" ]]; then
-    echo
     echo "🎉 Richtig!"
-    echo "Du hast Lektion 1 abgeschlossen."
-    echo
-
     mkdir -p "$HOME/bash-lernstand"
     echo "Lektion 1 geschafft! 🏆" > "$HOME/bash-lernstand/lektion-1-geschafft.txt"
-
     LEX="$HOME/bash-lexikon.txt"
     cat > "$LEX" <<'EOF'
 BASH-LEXIKON 📘 (Stand: Lektion 1)
-Lies diese Datei mit: less ~/bash-lexikon.txt
-(less: Space runter, b hoch, q beenden)
 
 Alphabetisch sortiert:
 
-cat
-- Zeigt den Inhalt einer Datei im Terminal.
-  Beispiel: cat schatz.txt
-  Beispiel: cat ANLEITUNG.txt
+cat  (Text anzeigen)
+AUFBAU: cat DATEI
+- DATEI: Datei, deren Inhalt angezeigt wird
+Beispiele:
+cat schatz.txt
+cat ANLEITUNG.txt
 
-cd
-- Wechselt den Ordner.
-  Beispiel: cd spiel
-  Beispiel: cd ..
+cd  (change directory = Ordner wechseln)
+AUFBAU: cd ZIEL
+- ZIEL: Ordner, in den du wechseln willst
+Spezial:
+cd .   (bleibt hier)
+cd ..  (ein Ordner nach oben)
+Beispiele:
+cd spiel
+cd ..
 
-less
-- Liest eine Datei zum Scrollen.
-  Beispiel: less ANLEITUNG.txt
-  Beispiel: less ~/bash-lexikon.txt
+less  (lesen)
+AUFBAU: less DATEI
+- DATEI: Datei, die gelesen wird (scrollen möglich)
+Beispiele:
+less ANLEITUNG.txt
+less ~/bash-lexikon.txt
 
+ls  (listen = auflisten)
+AUFBAU: ls [OPTION] [ORDNER]
+- OPTION: ändert die Anzeige (z.B. -l)
+- ORDNER: optionaler Zielordner (sonst aktueller Ordner)
+Beispiele:
 ls
-- Listet Dateien und Ordner auf.
-  Beispiel: ls
-  Beispiel: ls -l
+ls -l
 
+pwd  (print working directory)
+AUFBAU: pwd
+- zeigt den aktuellen Ordner
+Beispiel:
 pwd
-- Zeigt den aktuellen Ordner.
-  Beispiel: pwd
 EOF
-
-    echo "✅ Lexikon erstellt: $LEX"
-    echo "✅ Erfolg gespeichert: $HOME/bash-lernstand/lektion-1-geschafft.txt"
+    echo "✅ Lexikon erstellt/aktualisiert: $LEX"
     exit 0
   else
-    echo
-    echo "❌ Das ist nicht richtig."
-    echo "Tipp: Lies schatz.txt zur Not nochmal mit cat oder less."
+    echo "❌ Noch nicht."
     exit 1
   fi
 done

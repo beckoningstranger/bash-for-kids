@@ -1,0 +1,35 @@
+LEKTION 3 – DETEKTIV-SPIEL 🕵️‍♂️🔍
+
+GESCHICHTE
+In den Zimmern von Jakob und Sophia liegen viele Zettel.
+Einige sind nur Ablenkung, aber ein paar enthalten echte Hinweise.
+Ein Detektiv öffnet nicht alles, sondern sucht gezielt nach Mustern.
+Am Ende setzt du zwei Code-Teile zu einem Lösungs-Code zusammen.
+
+========================================
+BEFEHLE – GENAU ERKLÄRT
+
+find  (finden)
+AUFBAU:
+find WO OPTION WAS
+- WO (1. Argument): wo gesucht wird (z.B. . oder spiel)
+- OPTION (Flag): wie gesucht wird (z.B. -name)
+- WAS (Muster): wonach gesucht wird (z.B. "hinweis-*")
+Beispiele:
+find . -name "hinweis-*"
+find spiel -name "*.txt"
+
+grep  (suchen)
+AUFBAU:
+grep [OPTION] TEXT DATEI
+- TEXT: das Wort/die Zeichenfolge
+- DATEI: Datei(en), die durchsucht werden
+OPTION:
+-i  (Groß-/Klein egal)
+Beispiele:
+grep CODE hinweis-rot.txt
+grep -R -i code spiel
+
+========================================
+ZIEL
+Finde Hinweise durch Suchen, nicht durch Raten.

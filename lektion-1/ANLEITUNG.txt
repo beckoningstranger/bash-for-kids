@@ -1,72 +1,146 @@
 LEKTION 1 – SCHATZSUCHE 🗺️💎
 
-Du liest diese Anleitung mit:
-less ANLEITUNG.txt
-(less: Space runter, b hoch, q beenden)
+GESCHICHTE
+In einer unbekannten Welt ist ein Schatz versteckt.
+Du weißt nicht, wo – aber du kannst ihn finden.
+Dafür lernst du, wie Ordner (Orte) und Dateien (Zettel) funktionieren.
+Am Ende beweist du es mit „lösen.sh“.
 
-----------------------------------------
-START (wie immer)
+========================================
+ORDNER UND DATEIEN (WICHTIG)
 
-Du bist im Ordner: lektion-1
+- Datei:
+  enthält Text oder Daten.
+  Eine Datei kann nichts "in sich drin" haben.
 
-1) Spiel vorbereiten:
+- Ordner:
+  kann Dateien enthalten
+  kann andere Ordner enthalten
+
+========================================
+BAUMDIAGRAMM (NEUTRALES BEISPIEL: SCHULE)
+
+schule
+├── schulhof
+├── lehrerzimmer
+└── klassenzimmer
+    ├── klasse-1
+    │   ├── tafel.txt
+    │   └── hefte
+    └── klasse-2
+        └── tafel.txt
+
+Du bewegst dich immer in einem Baum:
+- Ordner sind Knoten
+- Dateien sind Enden
+
+========================================
+ZWEI SEHR WICHTIGE ZEICHEN
+
+.   (Punkt) bedeutet: HIER (der aktuelle Ordner)
+..  (Punkt Punkt) bedeutet: EIN ORDNER DARÜBER
+
+Beispiele:
+cd .     (du bleibst hier)
+cd ..    (du gehst nach oben)
+
+========================================
+SPIELSTART (NUR IN LEKTION 1 ERKLÄRT)
+
+1) Spiel bauen:
 bash spiel-vorbereiten.sh
 
-2) Spiel starten:
+2) Ins Spiel gehen:
 cd spiel
 
-3) Im Spiel umschauen:
-pwd
-ls
-cd ORDNERNAME
+Danach suchst du mit ls und cd, bis du die Schatzdatei findest.
 
-4) Schatz finden und lesen:
-cat schatz.txt
-oder
-less schatz.txt
-
-5) Level abschließen (wieder im Ordner lektion-1):
-cd ..
+Wenn du fertig bist (wieder im Ordner „lektion-1“):
 bash lösen.sh
 
-----------------------------------------
-BEFEHLE (mit kurzer Erklärung + Beispiele)
+========================================
+BEFEHLE – GENAU ERKLÄRT
 
-cat  (zeigt Text)
-- Zeigt den Inhalt einer Datei im Terminal.
+pwd  (print working directory)
+WAS MACHT ES?
+- zeigt deinen aktuellen Ort (Ordner) an
+AUFBAU:
+pwd
+- keine Argumente
+
+----------------------------------------
+ls  (listen)
+WAS MACHT ES?
+- zeigt, was im Ordner liegt (Dateien/Ordner)
+
+AUFBAU:
+ls [OPTION] [ORDNER]
+
+- OPTION (optional):
+  verändert die Anzeige
+  Beispiel: -l zeigt "mehr Details"
+
+- ORDNER (optional):
+  zeigt Inhalte eines bestimmten Ordners,
+  ohne dass du hinein wechseln musst
+
+Beispiele:
+ls
+ls -l
+ls wald
+
+----------------------------------------
+cd  (change directory)
+WAS MACHT ES?
+- wechselt den Ordner
+
+AUFBAU:
+cd ZIEL
+
+- ZIEL (Argument):
+  der Ordner, in den du gehen willst
+
+Spezialziele:
+.   bedeutet: hier
+..  bedeutet: darüber
+
+Beispiele:
+cd spiel
+cd wald
+cd ..
+
+----------------------------------------
+cat  (Text anzeigen)
+WAS MACHT ES?
+- zeigt den Inhalt einer Datei im Terminal an
+
+AUFBAU:
+cat DATEI
+
+- DATEI (Argument):
+  Datei, die angezeigt wird
+
 Beispiele:
 cat schatz.txt
 cat ANLEITUNG.txt
 
-cd  (change directory = Ordner wechseln)
-- Wechselt den Ordner.
-Beispiele:
-cd spiel
-cd ..
-
-less  (lesen mit Scrollen)
-- Liest eine Datei. Du kannst scrollen.
-Tasten: Space runter, b hoch, q beenden
-Beispiele:
-less ANLEITUNG.txt
-less schatz.txt
-
-ls  (listen = auflisten)
-- Listet Dateien und Ordner auf.
-Beispiele:
-ls
-ls -l
-
-pwd  (print working directory)
-- Zeigt, wo du gerade bist.
-Beispiel:
-pwd
-
 ----------------------------------------
-ZIEL 🎯
+less  (lesen)
+WAS MACHT ES?
+- zeigt eine Datei zum Lesen an (man kann scrollen)
 
-Finde schatz.txt, lies sie, merke dir den Ort.
-Dann lösen.sh ausführen und den richtigen Ort auswählen.
-Wenn du richtig liegst, wird dein BASH-LEXIKON in ~ angelegt.
+AUFBAU:
+less DATEI
 
-Viel Erfolg!
+- DATEI (Argument):
+  Datei, die gelesen wird
+
+Beispiele:
+less schatz.txt
+less ANLEITUNG.txt
+
+========================================
+ZIEL
+
+Finde den Schatz im Spielordner.
+Diese Anleitung erklärt nur die Werkzeuge – nicht die Lösung.

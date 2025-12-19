@@ -1,0 +1,46 @@
+LEKTION 4 – PIPES & UMLENKEN 🏭➡️📄
+
+GESCHICHTE
+Stell dir vor, du bist in einer Werkstatt: Maschinen erzeugen Ergebnisse.
+Heute lernst du, Ergebnisse in Dateien zu schreiben oder an andere Maschinen weiterzugeben.
+So kannst du aus kleinen Befehlen große Werkzeuge bauen.
+Am Ende erstellst du eine Datei „statistik.txt“ mit echten Zahlen.
+
+========================================
+BEFEHLE – GENAU ERKLÄRT
+
+>  (umleiten = schreiben)
+AUFBAU: BEFEHL > DATEI
+- schreibt Ergebnis in DATEI (überschreibt!)
+Beispiele:
+ls > statistik.txt
+wc -l berichte/*.txt > statistik.txt
+
+>> (anhängen)
+AUFBAU: BEFEHL >> DATEI
+- hängt Ergebnis unten an (Datei bleibt erhalten)
+Beispiele:
+echo "Neue Zeile" >> statistik.txt
+find berichte -type f | wc -l >> statistik.txt
+
+wc  (zählen)
+AUFBAU: wc [OPTION] DATEI
+- OPTION: -l zählt Zeilen
+Beispiele:
+wc -l bericht-a.txt
+wc -l berichte/*.txt
+
+|  (Pipe = verbinden)
+AUFBAU: BEFEHL | BEFEHL
+- Ergebnis von links wird Eingabe für rechts
+Beispiele:
+find berichte -type f | wc -l
+ls | wc -l
+
+========================================
+ZIEL
+Erstelle im Spielordner eine statistik.txt:
+- mindestens 3 Zeilen
+- enthält die Anzahl der Bericht-Dateien
+- enthält die Gesamtzeilenanzahl der Berichte
+Prüfe mit: bash lösen.sh
