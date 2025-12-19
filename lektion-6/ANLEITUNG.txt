@@ -1,0 +1,119 @@
+LEKTION 6 – DIE CHEF-MASCHINE: SUBSTITUTION $(...) 🧠🏭
+
+GESCHICHTE
+
+In der Maschinenfabrik gibt es jetzt eine neue Maschine: die Chef‑Maschine.
+Sie arbeitet nicht direkt mit Schrauben und Sensoren – sie arbeitet mit ERGEBNISSEN.
+
+Die Sekretärin sagt:
+„Ich brauche den Bericht automatisch. Keine Zahlen abschreiben!“
+
+Papa meint:
+„Das ist ein Job für dich.“
+
+Heute lernst du:
+$(...)  (Substitution)
+
+========================================
+SPIEL STARTEN / ZURÜCKSETZEN
+
+Spiel vorbereiten:
+bash spiel-vorbereiten.sh
+
+Wenn etwas schief geht:
+bash neustart.sh
+
+========================================
+ERKLÄRUNG 1 – echo (Text ausgeben)
+
+echo gibt Text aus.
+
+AUFBAU:
+echo TEXT
+
+Beispiele:
+echo Hallo
+echo "Hallo Welt"
+echo "Zahl: 42"
+
+echo ist super, um Zeilen für einen Bericht zu bauen.
+
+========================================
+ERKLÄRUNG 2 – Substitution $(...)
+
+Substitution bedeutet:
+Ein Befehl läuft zuerst.
+Sein Ergebnis (Text) wird danach in einen anderen Befehl eingesetzt.
+
+So sieht das aus:
+$(BEFEHL)
+
+Du kannst dir das wie eine Maschine in einer Maschine vorstellen:
+- innen läuft ein Befehl und produziert Text
+- außen benutzt du diesen Text
+
+Beispiele:
+echo "Zeilen: $(wc -l datei.txt)"
+echo "Fehler: $(cat logs/roboter-*.log | grep FEHLER | wc -l)"
+
+WICHTIG:
+Die Shell macht es in dieser Reihenfolge:
+1) Sie führt den Befehl in $(...) aus
+2) Sie ersetzt $(...) durch das Ergebnis
+3) Erst dann startet der äußere Befehl (z.B. echo)
+
+========================================
+AUFGABE
+
+Im Ordner spiel/logs liegen wieder Log‑Dateien.
+
+Du sollst ZWEI Dinge erstellen:
+
+A) Ein Skript:
+bericht-erstellen.sh
+
+B) Eine Datei (wird vom Skript erzeugt):
+spiel/bericht/diagnose.txt
+
+diagnose.txt muss GENAU 3 Zeilen haben:
+
+WARNUNGEN: <ZAHL>
+FEHLER: <ZAHL>
+OK: <ZAHL>
+
+Dabei gilt:
+- WARNUNGEN zählt Zeilen mit dem Wort WARNUNG
+- FEHLER zählt Zeilen mit dem Wort FEHLER
+- OK zählt Zeilen, die mit „OK “ anfangen
+
+WICHTIG:
+Die Zahlen dürfen NICHT von Hand eingetippt sein.
+Sie müssen mit $(...) berechnet werden.
+
+========================================
+HINWEIS – Wie du starten kannst
+
+1) Teste zuerst die inneren Befehle im Terminal, z.B.:
+cat spiel/logs/roboter-*.log | grep WARNUNG | wc -l
+
+2) Wenn die Zahl stimmt, baue sie in echo ein:
+echo "WARNUNGEN: $(...)"
+
+3) Schreibe in die Datei:
+>  für die erste Zeile (überschreibt)
+>> für die nächsten Zeilen (hängt an)
+
+Form (nur die Form, keine komplette Lösung):
+echo "WARNUNGEN: $(...)" > spiel/bericht/diagnose.txt
+echo "FEHLER: $(...)" >> spiel/bericht/diagnose.txt
+echo "OK: $(...)" >> spiel/bericht/diagnose.txt
+
+========================================
+PRÜFEN
+
+Wenn du glaubst, du bist fertig:
+bash lösen.sh
+
+lösen.sh prüft:
+- ob diagnose.txt stimmt
+- ob du in bericht-erstellen.sh wirklich $(...) benutzt hast

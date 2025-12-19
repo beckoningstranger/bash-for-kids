@@ -112,6 +112,13 @@ Beispiele:
 echo "Zeile 2" >> text.txt
 echo "Zeile 3" >> text.txt
 
+echo  (Text ausgeben)
+AUFBAU: echo TEXT
+Beispiele:
+echo Hallo
+echo "Zahl: 42"
+
+
 |  (Pipe = Förderband)
 AUFBAU: BEFEHL | BEFEHL
 - Text von links wird rechts weiterverarbeitet

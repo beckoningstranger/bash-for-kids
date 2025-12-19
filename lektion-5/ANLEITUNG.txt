@@ -47,6 +47,22 @@ Beispiel:
 cat roboter-01.log | grep FEHLER
 
 ========================================
+NEU HEUTE: echo
+
+echo gibt Text aus.
+
+AUFBAU:
+echo TEXT
+
+Beispiele:
+echo Hallo
+echo "Hallo Welt"
+echo "Zahl: 42"
+
+echo ist praktisch, um Zeilen für einen Bericht zu bauen:
+echo "WARNUNGEN: 12" > spiel/bericht/diagnose.txt
+
+========================================
 NEU HEUTE: PIPE, >, >>, wc
 
 |  (Pipe = Förderband)
