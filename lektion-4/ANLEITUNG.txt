@@ -1,46 +1,120 @@
-LEKTION 4 – PIPES & UMLENKEN 🏭➡️📄
+LEKTION 4 – SCHULSEKRETARIAT: SORTIER-CHAOS 🗂️🏫
 
 GESCHICHTE
-Stell dir vor, du bist in einer Werkstatt: Maschinen erzeugen Ergebnisse.
-Heute lernst du, Ergebnisse in Dateien zu schreiben oder an andere Maschinen weiterzugeben.
-So kannst du aus kleinen Befehlen große Werkzeuge bauen.
-Am Ende erstellst du eine Datei „statistik.txt“ mit echten Zahlen.
+
+Im Schulsekretariat ist heute alles durcheinander geraten.
+Die Sekretärin braucht dringend Hilfe.
+Papa meint: „Das ist ein Job für dich!“
+
+Du kennst die Befehle (ls, mv, rm, mkdir) schon.
+Neu ist heute nicht ein neuer Befehl – sondern eine neue SUPERKRAFT:
+Du lernst, viele Dateien auf einmal zu erwischen, ohne jede einzeln anzufassen.
 
 ========================================
-BEFEHLE – GENAU ERKLÄRT
+SPIEL STARTEN / ZURÜCKSETZEN
 
->  (umleiten = schreiben)
-AUFBAU: BEFEHL > DATEI
-- schreibt Ergebnis in DATEI (überschreibt!)
-Beispiele:
-ls > statistik.txt
-wc -l berichte/*.txt > statistik.txt
+Spiel vorbereiten:
+bash spiel-vorbereiten.sh
 
->> (anhängen)
-AUFBAU: BEFEHL >> DATEI
-- hängt Ergebnis unten an (Datei bleibt erhalten)
-Beispiele:
-echo "Neue Zeile" >> statistik.txt
-find berichte -type f | wc -l >> statistik.txt
-
-wc  (zählen)
-AUFBAU: wc [OPTION] DATEI
-- OPTION: -l zählt Zeilen
-Beispiele:
-wc -l bericht-a.txt
-wc -l berichte/*.txt
-
-|  (Pipe = verbinden)
-AUFBAU: BEFEHL | BEFEHL
-- Ergebnis von links wird Eingabe für rechts
-Beispiele:
-find berichte -type f | wc -l
-ls | wc -l
+Wenn etwas schief geht (zu viel verschoben oder gelöscht):
+bash neustart.sh
 
 ========================================
-ZIEL
-Erstelle im Spielordner eine statistik.txt:
-- mindestens 3 Zeilen
-- enthält die Anzahl der Bericht-Dateien
-- enthält die Gesamtzeilenanzahl der Berichte
-Prüfe mit: bash lösen.sh
+ERKLÄRUNG – WAS SIND WILDCARDS?
+
+Wildcards sind Platzhalter-Zeichen, die die SHELL versteht.
+
+Wichtig:
+Wenn du z.B. schreibst:
+mv mathe_*.txt ablage/mathe/
+
+dann macht NICHT mv das Muster.
+Die Shell ersetzt mathe_*.txt vorher durch eine Liste echter Dateinamen.
+Erst danach startet mv.
+
+Du kannst dir das so vorstellen:
+„Die Shell macht aus einem Muster viele Dateinamen.“
+
+========================================
+WILDCARDS (PLATZHALTER)
+
+*  (Stern)
+Bedeutet: „beliebig viele Zeichen (auch 0)“
+
+Beispiele:
+mathe_*.txt   -> mathe_01.txt, mathe_02.txt, ...
+IMG_*.jpg     -> IMG_0001.jpg, IMG_0002.jpg, ...
+
+?  (Fragezeichen)
+Bedeutet: „genau EIN Zeichen“
+
+Beispiele:
+note?.txt     -> note1.txt, note2.txt, noteA.txt
+note??.txt    -> note10.txt, noteAB.txt
+
+========================================
+AUFGABEN (SIEGBEDINGUNGEN)
+
+Im Spiel gibt es:
+spiel/eingang/
+
+Dort liegt alles durcheinander.
+Sortiere so, dass lösen.sh überall ✅ zeigt.
+
+1) MATHE
+Alle mathe_XX.txt nach:
+ablage/mathe/
+
+2) MATHE-LÖSUNGEN
+Alle mathe_loesung_XX.txt nach:
+ablage/loesungen/
+
+3) DEUTSCH
+Alle deutsch_XX.txt nach:
+ablage/deutsch/
+
+4) SPORT
+Alle sport_XX.txt nach:
+ablage/sport/
+
+5) ARCHIV
+Alle Dateien mit _alt_ im Namen nach:
+archiv/
+
+6) BILDER
+Alle IMG_XXXX.jpg nach:
+bilder/
+
+7) NOTIZEN (HIER BRAUCHST DU ?)
+Es gibt Notizen mit kurzem Namen und eine mit längerem Namen:
+- note1.txt, note2.txt, noteA.txt  (genau ein Zeichen nach „note“)
+- note10.txt                      (zwei Zeichen nach „note“)
+
+Aufgabe:
+- note?.txt nach: ablage/notizen-kurz/
+- note10.txt nach: ablage/notizen-lang/
+
+Wenn du hier nur * benutzt (note*.txt), würdest du auch note10.txt erwischen.
+Das soll nicht passieren – deshalb ist ? wichtig.
+
+8) MÜLL LÖSCHEN (rm)
+Alle kaputt_XX.tmp müssen gelöscht werden.
+Am Ende dürfen sie NICHT mehr existieren.
+
+========================================
+SICHERHEITS-TRICK (SEHR WICHTIG)
+
+Bevor du mv oder rm benutzt, teste dein Muster mit ls:
+
+ls eingang/note?.txt
+ls eingang/kaputt_*.tmp
+
+Wenn ls dir genau die richtigen Dateien zeigt, dann erst mv oder rm.
+
+========================================
+PRÜFEN
+
+Wenn du glaubst, du bist fertig:
+bash lösen.sh
+
+Das Skript zeigt dir eine Checkliste mit ✅/❌ und Tipps.
