@@ -1,0 +1,160 @@
+LEKTION 7 – GESELLENPRÜFUNG 🧰✨
+WERKZEUGE, GESCHICHTE & RÜCKBLICK
+
+GESCHICHTE
+
+Du hast in den letzten Lektionen viel gelernt.
+Nicht nur einzelne Befehle – sondern eine neue Art zu denken.
+
+Papa sagt:
+„Jetzt bist du kein Lehrling mehr.
+Du bist ein Geselle.“
+
+In dieser Lektion gibt es kein neues Spiel
+und kein lösen.sh.
+
+Heute lernst du nur einige Befehle,
+die jeder, der Bash benutzt, kennen sollte.
+Vielleicht sind sie dir einmal nützlich!
+
+------------------------------------------------
+
+WAS DU JETZT KANNST
+
+Früher:
+- viele einzelne Schritte
+- viel manuelles Nachschauen
+- wenig Überblick
+
+Heute:
+- suchen mit find
+- filtern mit grep
+- zählen mit wc
+- verbinden mit |
+- automatisch einsetzen mit $(...)
+
+Du könntest alle bisherigen Aufgaben heute viel effektiver lösen.
+Das ist genau das Zeichen dafür,
+dass du wirklich etwas gelernt hast.
+
+------------------------------------------------
+
+WERKZEUG 1 – history
+WAS HABE ICH SCHON GEMACHT?
+
+history zeigt dir,
+welche Befehle du vorher schon benutzt hast.
+
+Beispiel:
+history
+
+Das ist nützlich, weil:
+- du alte Befehle wiederfinden kannst
+- du sie nicht neu tippen musst
+- du aus deinen eigenen Lösungen lernen kannst
+
+------------------------------------------------
+
+WERKZEUG 2 – clear
+AUFRÄUMEN IM TERMINAL
+
+Mit clear wird der Bildschirm leer.
+
+Beispiel:
+clear
+
+Wichtig:
+- Es wird nichts gelöscht
+- Es ist nur fürs Aufräumen
+- Wie eine saubere Tafel
+
+------------------------------------------------
+
+WERKZEUG 3 – man
+DAS HANDBUCH VON UNIX UND LINUX
+
+man steht für manual (Handbuch).
+
+Beispiele:
+man ls
+man grep
+
+Diese Texte wurden von Entwicklern geschrieben,
+über viele Jahrzehnte,
+für andere Entwickler.
+
+Sie gehören zum Unix- und Linux-Projekt,
+einem der größten Gemeinschaftsprojekte
+der Computer-Geschichte.
+
+Viele Menschen aus der ganzen Welt
+haben daran freiwillig mitgearbeitet.
+
+Die Texte sind sehr genau,
+aber oft schwer zu lesen,
+weil sie technisch sind und meist auf Englisch.
+
+Deshalb hast du etwas viel Besseres:
+dein eigenes Bash-Lexikon.
+
+------------------------------------------------
+
+EIN KURZER BLICK ZURÜCK – DIE GESCHICHTE VON BASH
+
+Bash bedeutet:
+Bourne Again Shell
+
+Die erste Shell entstand in den 1970er Jahren.
+Bash wurde später für Linux entwickelt.
+
+Heute läuft Bash auf Millionen Computern
+und Servern auf der ganzen Welt.
+
+Viele Befehle, die du gelernt hast,
+sind älter als das Internet,
+aber immer noch wichtig.
+
+------------------------------------------------
+
+DEIN BASH-LEXIKON
+
+Nach jeder Lektion wurde dein Lexikon neu geschrieben.
+Nichts ging verloren.
+Neues kam dazu.
+
+Wenn du etwas vergessen hast:
+less ~/bash-lexikon.txt
+
+Das ist dein Nachschlagewerk.
+Nicht das Internet.
+Nicht man.
+Deins.
+
+------------------------------------------------
+
+GESELLENAUFGABE (OHNE PRÜFUNG)
+
+Es gibt keine Pflichtaufgabe.
+
+Aber du kannst:
+- alte Lektionen nochmal lösen
+- neue Wege ausprobieren
+- deine Lösungen verbessern
+
+Wenn du das kannst,
+hast du die Gesellenprüfung bestanden.
+
+------------------------------------------------
+
+ABSCHLUSS
+
+Du hast gelernt:
+- wie Computer denken
+- wie Werkzeuge zusammenarbeiten
+- wie man Probleme kleiner macht
+
+Das ist kein Spiel mehr.
+Das ist ein Handwerk.
+
+Und das Beste:
+Du bist erst am Anfang.
