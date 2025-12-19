@@ -1,0 +1,123 @@
+LEKTION 5 – DIE MASCHINENFABRIK: FÖRDERBÄNDER (PIPES) 🏭➡️🏭
+
+GESCHICHTE
+
+In der Maschinenfabrik laufen viele kleine Maschinen gleichzeitig.
+Jede Maschine kann nur EINE Sache gut:
+- eine Maschine produziert Text
+- eine Maschine filtert Text
+- eine Maschine zählt Text
+- eine Maschine schreibt Text in eine Datei
+
+Die Sekretärin der Fabrik braucht einen Bericht.
+Papa meint: „Das ist ein Job für dich!“
+
+Heute lernst du das Förderband-Symbol:
+|   (Pipe)
+
+Damit kannst du Maschinen miteinander verbinden.
+
+========================================
+SPIEL STARTEN / ZURÜCKSETZEN
+
+Spiel vorbereiten:
+bash spiel-vorbereiten.sh
+
+Wenn etwas schief geht:
+bash neustart.sh
+
+========================================
+ERKLÄRUNG – DIE IDEE DER MASCHINEN
+
+Stell dir Befehle als Maschinen vor:
+
+1) PRODUZIEREN (Text kommt raus)
+   Beispiel: cat DATEI
+
+2) FILTER (Text wird weniger)
+   Beispiel: grep SUCHWORT
+
+3) ZÄHLER (Text wird zu einer Zahl)
+   Beispiel: wc -l
+
+Eine Pipe | ist wie ein Förderband:
+Der Text, der links herauskommt, wird rechts hineingeschoben.
+
+Beispiel:
+cat roboter-01.log | grep FEHLER
+
+========================================
+NEU HEUTE: PIPE, >, >>, wc
+
+|  (Pipe = Förderband)
+AUFBAU: BEFEHL | BEFEHL
+- links kommt Text raus
+- rechts geht Text rein
+
+>  (umleiten = schreiben)
+AUFBAU: BEFEHL > DATEI
+- schreibt Ergebnis in DATEI (überschreibt die Datei)
+
+>> (anhängen)
+AUFBAU: BEFEHL >> DATEI
+- hängt Ergebnis unten an (Datei bleibt erhalten)
+
+wc  (word count = zählen)
+AUFBAU: wc -l
+- wc -l zählt Zeilen
+Wichtig:
+wc kann Text über eine Pipe bekommen!
+
+Beispiele:
+cat roboter-01.log | wc -l
+cat roboter-01.log | grep FEHLER | wc -l
+
+========================================
+AUFGABEN (SIEGBEDINGUNGEN)
+
+Im Ordner spiel/logs liegen viele Log-Dateien:
+roboter-01.log, roboter-02.log, ...
+
+Dein Ziel ist ein Bericht im Ordner:
+spiel/bericht/
+
+1) Erstelle die Datei:
+spiel/bericht/diagnose.txt
+
+2) diagnose.txt muss genau diese 3 Zeilen enthalten:
+WARNUNGEN: <ZAHL>
+FEHLER: <ZAHL>
+OK: <ZAHL>
+
+Dabei gilt:
+- WARNUNG zählt alle Zeilen, die das Wort WARNUNG enthalten
+- FEHLER zählt alle Zeilen, die das Wort FEHLER enthalten
+- OK zählt alle Zeilen, die das Wort OK enthalten
+
+TIPP (Maschinen-Denken):
+- cat produziert Text aus vielen Dateien (Wildcard!)
+- grep filtert nur passende Zeilen
+- wc -l zählt die Zeilen
+- > schreibt die erste Zeile in die Datei
+- >> hängt weitere Zeilen an
+
+Beispiel-Idee (nur als Form, nicht als Lösung):
+echo "WARNUNGEN: 123" > spiel/bericht/diagnose.txt
+echo "FEHLER: 45" >> spiel/bericht/diagnose.txt
+echo "OK: 678" >> spiel/bericht/diagnose.txt
+
+========================================
+SICHERHEITS-TRICK
+
+Bevor du in eine Datei schreibst, schau dir die Zahl erst im Terminal an:
+cat spiel/logs/roboter-*.log | grep WARNUNG | wc -l
+
+Erst wenn die Zahl stimmt, schreib sie in diagnose.txt.
+
+========================================
+PRÜFEN
+
+Wenn du glaubst, du bist fertig:
+bash lösen.sh
+
+Das Skript zeigt dir ✅/❌ und Tipps.
