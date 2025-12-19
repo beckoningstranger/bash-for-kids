@@ -1,0 +1,108 @@
+LEKTION 2 – AUFRÄUM-SPIEL (ZWEI ZIMMER) 🧹📦
+
+Du liest diese Anleitung mit:
+less ANLEITUNG.txt
+(less: Space runter, b hoch, q beenden)
+
+----------------------------------------
+START (wie immer)
+
+Du bist im Ordner: lektion-2
+
+1) Spiel vorbereiten:
+bash spiel-vorbereiten.sh
+
+2) Spiel starten:
+cd spiel
+
+3) Wenn du prüfen willst (jederzeit):
+cd ..
+bash lösen.sh
+(Du kannst danach wieder zurück ins Spiel: cd spiel)
+
+----------------------------------------
+ZIELE 🎯
+
+ZIEL 1: AUFRÄUMEN
+- Alle .txt Dateien (außer geheimcode.txt, poster.txt, todo.txt) sollen nach:
+  spiel/ablage/texte
+- Alle .jpg Dateien sollen nach:
+  spiel/ablage/bilder
+
+ZIEL 2: DOPPELT AUF DIE SCHREIBTISCHE
+Am Ende müssen BEIDE Dateien auf BEIDEN Schreibtischen liegen:
+- geheimcode.txt
+- poster.txt
+Orte:
+- spiel/zimmer-jakob/schreibtisch
+- spiel/zimmer-sophia/schreibtisch
+
+ZIEL 3: MÜLL WEG
+- kaputt.tmp muss gelöscht werden (nicht verschieben).
+
+ZIEL 4: ETWAS NEUES ERSTELLEN
+- Erstelle auf Jakobs Schreibtisch eine neue Datei:
+  todo.txt
+
+----------------------------------------
+BEFEHLE (mit kurzer Erklärung + Beispiele)
+
+cp  (copy = kopieren)
+- Kopiert eine Datei.
+Beispiele:
+cp geheimcode.txt spiel/zimmer-jakob/schreibtisch/
+cp poster.txt spiel/zimmer-sophia/schreibtisch/
+
+mkdir  (make directory = Ordner machen)
+- Erstellt Ordner.
+Beispiele:
+mkdir test
+mkdir -p a/b/c
+
+mv  (move = bewegen/verschieben)
+- Verschiebt oder benennt um.
+Beispiele:
+mv foto1.jpg spiel/ablage/bilder/
+mv alt.txt neu.txt
+
+rm  (remove = entfernen/löschen)  VORSICHT!
+- Löscht Dateien. Das kann man nicht einfach rückgängig machen.
+Beispiele:
+rm kaputt.tmp
+rm spiel/zimmer-jakob/schrank/kaputt.tmp
+
+touch  (erzeugen)
+- Erstellt eine leere Datei.
+Beispiele:
+touch todo.txt
+touch neu.txt
+
+ls  (listen)
+- Listet Dateien und Ordner auf.
+Beispiele:
+ls
+ls -l
+
+cd  (Ordner wechseln)
+- Wechselt den Ordner.
+Beispiele:
+cd spiel
+cd ..
+
+pwd  (wo bin ich?)
+- Zeigt den aktuellen Ordner.
+Beispiel:
+pwd
+
+cat  (Text zeigen)
+- Zeigt Datei-Inhalt.
+Beispiel:
+cat spiel/zimmer-jakob/boden/hausaufgaben.txt
+
+less  (lesen)
+- Liest Datei mit Scrollen (Space runter, b hoch, q beenden).
+Beispiel:
+less spiel/zimmer-sophia/boden/einkauf.txt
+
+----------------------------------------
+Viel Erfolg!

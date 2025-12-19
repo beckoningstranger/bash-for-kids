@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -u
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 echo "LEVEL-ABSCHLUSS: Lektion 1 ✅"
 echo
 echo "Frage: Wo liegt der Schatz?"
@@ -16,7 +18,7 @@ options=(
   "im Dorf, im Haus"
   "im Dorf, im Turm"
   "am Meer, am Strand"
-  "am Meer, auf der Insel, unter den Palmen, in der Höhle"
+  "am Meer, auf der Insel, in der Höhle"
   "im Dorf, am Markt"
 )
 
@@ -75,8 +77,7 @@ EOF
   else
     echo
     echo "❌ Das ist nicht richtig."
-    echo "Tipp: Denk an den Merksatz aus schatz.txt."
-    echo "Lies die Datei zur Not nochmal mit cat oder less."
+    echo "Tipp: Lies schatz.txt zur Not nochmal mit cat oder less."
     exit 1
   fi
 done

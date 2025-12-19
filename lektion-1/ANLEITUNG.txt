@@ -1,0 +1,72 @@
+LEKTION 1 – SCHATZSUCHE 🗺️💎
+
+Du liest diese Anleitung mit:
+less ANLEITUNG.txt
+(less: Space runter, b hoch, q beenden)
+
+----------------------------------------
+START (wie immer)
+
+Du bist im Ordner: lektion-1
+
+1) Spiel vorbereiten:
+bash spiel-vorbereiten.sh
+
+2) Spiel starten:
+cd spiel
+
+3) Im Spiel umschauen:
+pwd
+ls
+cd ORDNERNAME
+
+4) Schatz finden und lesen:
+cat schatz.txt
+oder
+less schatz.txt
+
+5) Level abschließen (wieder im Ordner lektion-1):
+cd ..
+bash lösen.sh
+
+----------------------------------------
+BEFEHLE (mit kurzer Erklärung + Beispiele)
+
+cat  (zeigt Text)
+- Zeigt den Inhalt einer Datei im Terminal.
+Beispiele:
+cat schatz.txt
+cat ANLEITUNG.txt
+
+cd  (change directory = Ordner wechseln)
+- Wechselt den Ordner.
+Beispiele:
+cd spiel
+cd ..
+
+less  (lesen mit Scrollen)
+- Liest eine Datei. Du kannst scrollen.
+Tasten: Space runter, b hoch, q beenden
+Beispiele:
+less ANLEITUNG.txt
+less schatz.txt
+
+ls  (listen = auflisten)
+- Listet Dateien und Ordner auf.
+Beispiele:
+ls
+ls -l
+
+pwd  (print working directory)
+- Zeigt, wo du gerade bist.
+Beispiel:
+pwd
+
+----------------------------------------
+ZIEL 🎯
+
+Finde schatz.txt, lies sie, merke dir den Ort.
+Dann lösen.sh ausführen und den richtigen Ort auswählen.
+Wenn du richtig liegst, wird dein BASH-LEXIKON in ~ angelegt.
+
+Viel Erfolg!
