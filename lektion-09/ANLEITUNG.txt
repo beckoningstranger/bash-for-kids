@@ -1,0 +1,161 @@
+LEKTION 9 – GEHEIME NACHRICHTEN (CAESAR-CODE)
+==========================================
+
+Story
+-----
+Jakob findet eine alte Textdatei. Darin stehen seltsame Sätze:
+
+  KHOOR ZHOW
+
+Jemand hat die Nachricht absichtlich unlesbar gemacht.
+Heute lernst du, wie man so eine Geheimschrift selbst macht – und wieder zurück verwandelt.
+
+Ziele
+-----
+Heute lernst du:
+- was Kodieren und Dekodieren bedeutet
+- wie der Caesar-Code funktioniert (Verschiebung um 3)
+- den Befehl: tr
+- die Bash-Besonderheit: $REPLY
+- erste wichtige Flags bei read und set (nur erklärt, noch nicht vertieft)
+
+Wir arbeiten weiterhin nur mit GROSSBUCHSTABEN (A–Z).
+
+
+1) Caesar-Code kurz erklärt
+--------------------------
+Beim Caesar-Code wird jeder Buchstabe im Alphabet weitergeschoben.
+
+Bei Verschiebung +3 gilt:
+  A -> D
+  B -> E
+  C -> F
+  ...
+  X -> A
+  Y -> B
+  Z -> C
+
+Beispiel:
+  HALLO -> KHOOR
+
+
+2) Neuer Befehl: tr
+-------------------
+tr ersetzt Zeichen nach einer festen Zuordnung.
+
+Grundregel: positionsweise!
+  1. Zeichen links -> 1. Zeichen rechts
+  2. Zeichen links -> 2. Zeichen rechts
+  ...
+
+Beispiel:
+  echo "ABC" | tr 'ABC' 'DEF'
+
+
+2.1) Was heißt: tr 'A-Z' 'D-ZA-C' ?
+-----------------------------------
+'A-Z' bedeutet:
+  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+'D-ZA-C' besteht aus zwei Bereichen:
+  D-Z  -> DEFGHIJKLMNOPQRSTUVWXYZ
+  A-C  -> ABC
+
+Zusammen:
+  DEFGHIJKLMNOPQRSTUVWXYZABC
+
+Damit gilt:
+  A -> D
+  B -> E
+  C -> F
+  ...
+  X -> A
+  Y -> B
+  Z -> C
+
+
+3) read, $REPLY und Flags
+-------------------------
+read liest eine Zeile von der Tastatur.
+
+Wenn kein Variablenname angegeben wird, speichert Bash die Eingabe automatisch in:
+  REPLY
+
+Beispiel:
+  read -r -p "Sag etwas: "
+  echo "$REPLY"
+
+Die Flags:
+- -p "Text":
+  zeigt einen Text an, BEVOR man etwas eintippt (Prompt)
+
+- -r:
+  verhindert, dass Backslashes besonders behandelt werden
+  (für Anfänger: „lies genau das, was ich tippe“)
+
+
+4) set -euo pipefail (nur erklärt)
+----------------------------------
+Diese Zeile macht Skripte sicherer:
+
+  set -euo pipefail
+
+Bedeutung:
+- -e : Skript bricht ab, wenn ein Befehl fehlschlägt
+- -u : Fehler, wenn man eine nicht gesetzte Variable benutzt
+- -o pipefail : Fehler, wenn ein Teil einer Pipe fehlschlägt
+
+Du musst das noch nicht auswendig lernen.
+Es ist gut zu wissen, dass diese Zeile existiert.
+
+
+5) Aufgabe: Zwei Skripte schreiben
+----------------------------------
+Du schreibst zwei Skripte:
+
+A) encode.sh
+- fragt eine Nachricht ab
+- kodiert sie (Caesar +3)
+- gibt die kodierte Nachricht aus
+
+B) decode.sh
+- fragt eine kodierte Nachricht ab
+- dekodiert sie wieder
+
+
+6) Hinweise (ohne komplette Lösung)
+-----------------------------------
+Du brauchst am Ende eine Zeile, die den Inhalt von $REPLY an tr weitergibt.
+
+Hinweis: So sieht das Muster aus (mit PLATZHALTERN):
+  echo "$REPLY" | tr '<links>' '<rechts>'
+
+Für encode (kodieren):
+  links  = A-Z
+  rechts = D-ZA-C
+
+Für decode (dekodieren):
+  links  = D-ZA-C
+  rechts = A-Z
+
+
+7) Testen
+---------
+1) Skripte ausführbar machen:
+   chmod +x encode.sh decode.sh
+
+2) Beispiel:
+   ./encode.sh
+   (HALLO WELT eingeben)
+   -> KHOOR ZHOW
+
+   ./decode.sh
+   (KHOOR ZHOW eingeben)
+   -> HALLO WELT
+
+
+8) Mini-Fragen
+--------------
+- Warum kann man read nicht direkt in eine Pipe stecken?
+- Warum müssen beide tr-Listen gleich lang sein?
+- Warum ist der Caesar-Code unsicher?
