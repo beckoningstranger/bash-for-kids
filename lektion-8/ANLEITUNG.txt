@@ -1,0 +1,175 @@
+LEKTION 8 – DER ZAUBERER VERÄNDERT DIE GESCHICHTE ✨📖
+SED (S/ALT/NEU/)
+
+GESCHICHTE
+
+In der Fabrik gibt es jetzt einen Zauberer.
+Er darf keine neue Geschichte schreiben.
+Er darf nur ZAUBER-WORTTAUSCH machen.
+
+Die Sekretärin sagt:
+„Mach die Geschichte lustiger und moderner – aber ohne alles neu zu tippen!“
+
+Papa meint:
+„Das geht. Mit sed.“
+
+------------------------------------------------------------
+
+SPIEL STARTEN / ZURÜCKSETZEN
+
+Diese Lektion hat KEIN großes Spiel.
+Du arbeitest nur mit Text-Dateien.
+
+Wenn du wieder von vorne anfangen willst:
+bash neustart.sh
+
+------------------------------------------------------------
+
+WAS IST sed?
+
+sed ist eine Text‑Maschine.
+Sie liest Text und kann ihn automatisch verändern.
+
+Der wichtigste Zauber in sed heißt:
+s/ALT/NEU/
+
+Das bedeutet:
+Ersetze ALT durch NEU.
+
+------------------------------------------------------------
+
+Nach diesem Zauberspruch kannst du noch das Verhalten von sed ändern, ähnlich wie mit Flags:
+
+Wenn du /g dazu schreibst, bedeutet das:
+„Nicht nur einmal – sondern überall in jeder Zeile.“
+
+Beispiel:
+sed 's/Wald/Schule/g' spiel/haensel-und-gretel.txt
+
+------------------------------------------------------------
+
+Wenn du /i benutzt, bedeutet das:
+"Ignoriere Groß- und Kleinschreibung."
+
+Beispiel:
+sed 's/Wald/Schule/i' spiel/haensel-und-gretel.txt
+
+So ersetzt du nicht nur Wald, sonder auch wAld, WALd, WALD, walD, usw.
+
+------------------------------------------------------------
+Diese Flags kannst du auch kombinieren.
+
+Beispiel:
+sed 's/Wald/Schule/gi' spiel/haensel-und-gretel.txt
+
+Das bedeutet: Ersetze alle 'wald', egal mit welcher Groß- oder Kleinschreibung im Text.
+
+------------------------------------------------------------
+
+TIPP – Mehrere Zauber in einem sed-Befehl ✨
+Manchmal möchtest du mehr als ein Wort verändern.
+Zum Beispiel mehrere Namen oder Orte.
+
+Dafür musst du sed nicht mehrfach hintereinander starten.
+Du kannst mehrere Ersetzungen in einem einzigen sed-Befehl machen.
+
+Es gibt dafür zwei gleichwertige Möglichkeiten.
+
+------------------------------------------------------------
+
+MÖGLICHKEIT 1 – Mit mehreren -e Teilen
+
+Jedes -e ist ein eigener kleiner Zauber.
+
+Beispiel:
+
+sed -e 's/Hänsel/Jakob/gi' \
+    -e 's/Gretel/Sophia/gi' \
+    spiel/haensel-und-gretel.txt
+
+------------------------------------------------------------
+
+MÖGLICHKEIT 2 - Mehrere s/.../.../ in einem Text
+
+Du kannst auch mehrere Ersetzungen hintereinander schreiben
+und sie mit einem Semikolon ; trennen.
+
+Beispiel:
+
+sed 's/Hänsel/Jakob/gi; s/Gretel/Sophia/gi' spiel/haensel-und-gretel.txt
+
+Das Ergebnis ist genau dasselbe wie bei der ersten Möglichkeit.
+
+------------------------------------------------------------
+
+Wichtig:
+- sed verändert eine Datei NICHT automatisch.
+- Es zeigt das Ergebnis im Terminal.
+- Wenn du eine neue Datei willst, benutzt du >
+
+Beispiel:
+sed 's/Wald/Schule/g' spiel/haensel-und-gretel.txt > spiel/neue-geschichte.txt
+
+------------------------------------------------------------
+
+DEINE AUFGABE
+
+Du sollst eine neue Version der Geschichte erzeugen:
+spiel/neue-geschichte.txt
+
+Dazu sollst du dein eigenes Skript benutzen:
+zauber.sh
+
+1) Öffne die Geschichte (nur anschauen):
+less spiel/haensel-und-gretel.txt
+
+2) Bearbeite zauber.sh so, dass es:
+- die Originaldatei nimmt
+- mit sed mehrere Dinge verändert
+- eine neue Datei schreibt
+
+------------------------------------------------------------
+
+WAS SOLL VERÄNDERT WERDEN? (4 Zauber)
+
+Mach genau diese 4 Veränderungen:
+
+1) Namen tauschen:
+Hänsel -> Jakob
+
+2) Namen tauschen:
+Gretel -> Sophia
+
+3) Ort modernisieren:
+Walde -> Stadtpark
+
+4) Technik-Zauber:
+Brot -> Pizza
+
+Tipp:
+Du kannst mehrere Ersetzungen in einem sed‑Befehl machen.
+Zum Beispiel mit mehreren -e Teilen oder mit mehreren s/.../.../; s/.../.../
+
+------------------------------------------------------------
+
+SICHERHEITS-TRICK
+
+Teste erst im Terminal, ob dein sed-Zauber richtig aussieht,
+bevor du ihn in eine Datei schreibst:
+
+sed 's/.../.../g' spiel/haensel-und-gretel.txt | less
+
+(Heute darfst du Pipes benutzen – du kannst aber auch einfach ohne less testen.)
+
+------------------------------------------------------------
+
+PRÜFEN
+
+Wenn du glaubst, du bist fertig:
+bash lösen.sh
+
+lösen.sh prüft:
+- ob neue-geschichte.txt existiert
+- ob alle 4 Veränderungen drin sind
+- ob alte Wörter wirklich weg sind
+- und schreibt danach dein Bash‑Lexikon neu (inkl. sed)
